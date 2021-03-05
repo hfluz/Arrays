@@ -1,4 +1,4 @@
-package br.puc.ed.s1;
+package br.puc.ed.game;
 
 public class RegistroPontuacao {
   private String nome;

@@ -1,4 +1,4 @@
-package br.puc.ed.s1;
+package br.puc.ed.game;
 
 public class PainelPontuacao {
   private RegistroPontuacao[] registros;
@@ -16,5 +16,4 @@ public class PainelPontuacao {
   public void imprimir(){
 
   }
-
 }
