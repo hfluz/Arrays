@@ -27,7 +27,11 @@ public class PainelPontuacao {
         }
     }
 
-  public void imprimir(){
-
-  }
+    public void imprimir() {
+        for (int i = 0; i < quantidadeRegistros; i++) {
+            System.out
+                .println(i + ": " + registros[i].getNome() + " / " + registros[i].getPontuacao());
+        }
+        System.out.println();
+    }
 }
