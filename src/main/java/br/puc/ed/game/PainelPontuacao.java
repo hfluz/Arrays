@@ -10,9 +10,22 @@ public class PainelPontuacao {
         quantidadeRegistros = 0;
     }
 
-  public void adicionar(RegistroPontuacao rp){
-
-  }
+    public void adicionar(RegistroPontuacao rp) {
+        int novaPontuacao = rp.getPontuacao();
+        if (quantidadeRegistros < registros.length
+            || novaPontuacao > registros[quantidadeRegistros - 1]
+            .getPontuacao()) {
+            if (quantidadeRegistros < registros.length) {
+                quantidadeRegistros++;
+            }
+            int j = quantidadeRegistros - 1;
+            while (j > 0 && registros[j - 1].getPontuacao() < novaPontuacao) {
+                registros[j] = registros[j - 1];
+                j--;
+            }
+            registros[j] = rp;
+        }
+    }
 
   public void imprimir(){
 
