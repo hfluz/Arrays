@@ -1,29 +1,38 @@
-package br.puc.ed.game;
+package br.puc.ed.ex3;
 
-public class PainelPontuacao {
+import br.puc.ed.game.RegistroPontuacao;
+
+public class PainelPontuacaoSemOrdem {
 
     private RegistroPontuacao[] registros;
     private int quantidadeRegistros;
 
-    public PainelPontuacao(int capacidade) {
+    public PainelPontuacaoSemOrdem(int capacidade) {
         registros = new RegistroPontuacao[capacidade];
         quantidadeRegistros = 0;
     }
 
-    public void adicionar(RegistroPontuacao rp) {
-        int novaPontuacao = rp.getPontuacao();
-        if (quantidadeRegistros < registros.length
-            || novaPontuacao > registros[quantidadeRegistros - 1]
-            .getPontuacao()) {
-            if (quantidadeRegistros < registros.length) {
-                quantidadeRegistros++;
+    /**
+     * Exercício 3
+     * @param novaPontuacao
+     */
+    public void adicionar(RegistroPontuacao novaPontuacao){
+        // Inclusão na primeira posição livre do array caso a lista esteja não esteja cheia
+        if(quantidadeRegistros < registros.length){
+            registros[quantidadeRegistros++] = novaPontuacao;
+        } else {
+            int indiceMenorPontuacao = 0;
+            // Iteração sobre a lista para descobrir qual o índice da menor pontuação
+            for (int i = 1; i < registros.length; i++) {
+                if (registros[i].getPontuacao() < registros[indiceMenorPontuacao].getPontuacao()) {
+                    indiceMenorPontuacao = i;
+                }
             }
-            int j = quantidadeRegistros - 1;
-            while (j > 0 && registros[j - 1].getPontuacao() < novaPontuacao) {
-                registros[j] = registros[j - 1];
-                j--;
+            // Caso a menor pontuação seja menor do que a nova pontuação, ela será substituída
+            // nessa posição
+            if (novaPontuacao.getPontuacao() > registros[indiceMenorPontuacao].getPontuacao()) {
+                registros[indiceMenorPontuacao] = novaPontuacao;
             }
-            registros[j] = rp;
         }
     }
 

@@ -17,4 +17,8 @@ public class RegistroPontuacao {
     public int getPontuacao() {
         return pontuacao;
     }
+
+    public String toString(){
+        return nome + ": " + pontuacao;
+    }
 }
